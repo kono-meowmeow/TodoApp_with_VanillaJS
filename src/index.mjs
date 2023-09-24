@@ -3,6 +3,12 @@ const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value; // add-textというidの要素の値を取得する
   document.getElementById("add-text").value = ""; // add-textというidの要素の値を空にする
 
+  // 未完了リストに追加する関数
+  addIncompleteList(inputText); // addIncompleteList関数を実行
+};
+
+// 未完了リストに追加する関数
+const addIncompleteList = (text) => {
   // liタグを生成
   const li = document.createElement("li"); // liタグを生成
 
@@ -12,7 +18,7 @@ const onClickAdd = () => {
 
   // pタグを生成
   const p = document.createElement("p"); // pタグを生成
-  p.innerText = inputText; // pタグの中身をinputTextにする
+  p.innerText = text; // pタグの中身をtextにする
 
   // button（完了）タグを生成
   const completeButton = document.createElement("button"); // buttonタグを生成
@@ -56,6 +62,16 @@ const onClickAdd = () => {
     // 戻すボタンを生成
     const backButton = document.createElement("button"); // buttonタグを生成
     backButton.innerText = "戻す"; // buttonタグの中身を戻すにする
+    // 戻すボタンを押したときの処理
+    backButton.addEventListener("click", () => {
+      // 押された削除ボタンの親タグ(div)の親タグ（li）を未完了リストから削除
+      const deleteTarget = backButton.parentNode.parentNode; // 押された戻すボタンの親タグ(div)の親タグ(li)を取得
+      document.getElementById("complete-list").removeChild(deleteTarget); // complete-listというidの要素の子要素からdeleteTargetを削除
+
+      // テキストを取得
+      const text = backButton.parentNode.firstElementChild.innerText; // 押された戻すボタンの親タグ(div)の最初の子要素(p)のテキストを取得
+      addIncompleteList(text); // addIncompleteList関数を実行
+    });
 
     // divタグの子要素に各要素を設定
     addTarget.appendChild(p); // divの子要素にpタグを設定
@@ -83,13 +99,13 @@ const onClickAdd = () => {
 
   // 未完了のリストに追加
   document.getElementById("incomplete-list").appendChild(li); // incomplete-listというidの要素の子要素にliタグを設定
-}
+};
 
 // 未完了リストから指定の要素を削除
 const deleteFromIncompleteList = (target) => {
   // 押された削除ボタンの親タグ(div)の親タグ（li）を未完了リストから削除
   document.getElementById("incomplete-list").removeChild(target); // ulタグの子要素から削除
-}
+};
 
 document
   .getElementById("add-button") // add-buttonというidに関して、
