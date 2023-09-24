@@ -3,18 +3,30 @@
   <head>
     <title>ToDoAPP_with_VanillaJS</title>
     <meta charset="UTF-8" />
+    <!-- スクリプトの読み込み -->
+    <script src="./index.mjs" type="module"></script>
+    <!-- スタイルの読み込み -->
+    <link rel="stylesheet" href="./styles.css">
   </head>
 
   <body>
-    <div>
+    <div class="input-area">
       <input placeholder="TODOを入力" />
       <button>追加</button>
     </div>
-    <div>
-      <p>未完了のTODO</p>
+    <div class="incomplete-area">
+      <p class="title">未完了のTODO</p>
       <ul>
         <li>
-          <div>
+          <div >
+            <!-- サンプル -->
+            TODOです
+            <button>完了</button>
+            <button>削除</button>
+          </div>
+        </li>
+        <li>
+          <div >
             <!-- サンプル -->
             TODOです
             <button>完了</button>
@@ -23,8 +35,8 @@
         </li>
       </ul>
     </div>
-    <div>
-      <p>完了したTODO</p>
+    <div class="complete-area">
+      <p class="title">完了したTODO</p>
       <ul>
         <li>
           <div>
@@ -35,7 +47,5 @@
         </li>
       </ul>
     </div>
-
-    <script src="./index.mjs" type="module"></script>
   </body>
 </html>
