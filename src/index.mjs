@@ -20,6 +20,49 @@ const onClickAdd = () => {
   completeButton.addEventListener("click", () => {
     // 押された削除ボタンの親タグ(div)の親タグ（li）を未完了リストから削除
     deleteFromIncompleteList(completeButton.parentNode.parentNode); // deleteFromIncompleteList関数を実行
+
+    // 完了リストに追加する要素
+    const addTarget = completeButton.parentNode; // 押された完了ボタンの親タグ(div)を完了リストに追加する
+    // TODO内容テキストを取得
+    const text = addTarget.firstElementChild.innerText; // addTargetの最初の子要素のテキストを取得
+
+    // 完了したTODOに追加する要素
+
+    // 以下、自分で考えたコード(これでも動いた)
+    // const li = document.createElement("li"); // liタグを生成
+    // const div = document.createElement("div"); // divタグを生成
+    // const p = document.createElement("p"); // pタグを生成
+    // p.innerText = text; // pタグの中身をtextにする
+    // const backButton = document.createElement("button"); // buttonタグを生成
+    // backButton.innerText = "戻す"; // buttonタグの中身を戻すにする
+    // li.appendChild(div); // liタグの子要素にdivタグを設定
+    // div.appendChild(p); // divタグの子要素にpタグを設定
+    // div.className = "list-row"; // divタグのclassをlist-rowにする
+    // div.appendChild(backButton); // divタグの子要素にbuttonタグを設定
+    // document.getElementById("complete-list").appendChild(li); // complete-listというidの要素の子要素にliタグを設定
+
+    // 以下、解答コード
+    // div以下を初期化
+    addTarget.textContent = null; // addTargetのテキストを空にする
+
+    // liタグを生成
+    const li = document.createElement("li"); // liタグを生成
+    li.append(addTarget); // liタグの子要素にaddTargetを設定
+
+    // pタグを生成
+    const p = document.createElement("p"); // pタグを生成
+    p.innerText = text; // pタグの中身をtextにする
+
+    // 戻すボタンを生成
+    const backButton = document.createElement("button"); // buttonタグを生成
+    backButton.innerText = "戻す"; // buttonタグの中身を戻すにする
+
+    // divタグの子要素に各要素を設定
+    addTarget.appendChild(p); // divの子要素にpタグを設定
+    addTarget.appendChild(backButton); // divの子要素にbuttonタグを設定
+
+    // 完了済みリストに追加
+    document.getElementById("complete-list").appendChild(li); // complete-listというidの要素の子要素にliタグを設定
   });
 
   // button（削除）タグを生成
