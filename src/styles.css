@@ -7,6 +7,7 @@ button {
   border: none;
   padding: 4px 16px;
   margin-left: 4px;
+  word-break: keep-all;
 }
 
 button:hover {
@@ -51,6 +52,14 @@ li {
   padding: 8px;
   margin: 8px;
   border-radius: 8px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  word-break: break-all;
+  padding-bottom: 5px;
 }
 
 .title {

@@ -8,7 +8,11 @@ const onClickAdd = () => {
 
   // divタグを生成
   const div = document.createElement("div"); // divタグを生成
-  div.innerText = inputText; // divタグの中身をinputTextにする
+  div.className = "list-row"; // divタグのclassをlist-rowにする
+
+  // pタグを生成
+  const p = document.createElement("p"); // pタグを生成
+  p.innerText = inputText; // pタグの中身をinputTextにする
 
   // button（完了）タグを生成
   const completeButton = document.createElement("button"); // buttonタグを生成
@@ -29,7 +33,8 @@ const onClickAdd = () => {
   // liタグの子要素にdiv要素を設定
   li.appendChild(div); // liタグの子要素にdivタグを設定
 
-  // divタグの子要素にbuttonタグを設定
+  // divタグの子要素に各要素を設定
+  div.appendChild(p); // divタグの子要素にpタグを設定
   div.appendChild(completeButton); // divタグの子要素にbuttonタグを設定
   div.appendChild(deleteButton); // divタグの子要素にbuttonタグを設定
 
